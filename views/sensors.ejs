@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dispositivos</title>
+    <%- include('imports'); -%>
+  </head>
+  <body>
+    <%- include('navbar'); -%>
+    
+    <div class="container">
+      <% sensors.forEach((sensor) => { %>
+        <div class="sensor">
+          <h2 class="sensor-name">
+            <%= sensor.id %> - <%= sensor.name %>
+          </h2>
+          <br>
+          <% if (sensor.measurements.length > 0) { %>
+          <p class="sensor-info">
+            Temperatura: <%= sensor.measurements[sensor.measurements.length - 1].temperature %>
+            Umidade: <%= sensor.measurements[sensor.measurements.length - 1].humidity %>
+          </p>
+          <% } else { %>
+            Nenhum valor existente para esse sensor
+          <% } %>
+        </div>
+      <% }); %>
+    </div>
+
+  </body>
+</html>
